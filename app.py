@@ -53,7 +53,7 @@ handler = WebhookHandler(channel_secret)
 @app.route("/callback", methods=['POST'])
 def callback():
     body = request.get_data(as_text=True)
-    # print(body)
+    print(body)
     req = request.get_json(silent=True, force=True)
     intent = req["queryResult"]["intent"]["displayName"]
     text = req['originalDetectIntentRequest']['payload']['data']['message']['text']
