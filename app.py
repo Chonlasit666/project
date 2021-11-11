@@ -43,6 +43,9 @@ def reply(intent,text,reply_token,id,disname):
     if intent == 'Healthcare':
         text_message = TextSendMessage(text='ทดสอบสำเร็จ')
         line_bot_api.reply_message(reply_token,text_message)
+    if intent == 'test':
+        text_message = TextSendMessage(text='ate')
+        line_bot_api.reply_message(reply_token,text_message)
 
 if __name__ == "__main__":
     app.run()
