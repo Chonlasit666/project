@@ -53,7 +53,7 @@ def reply(intent,text,reply_token,id,disname):
         a = callAPI()
         print(a.keys())
         print(a['Heartrate_O2']['H'])
-        text_message = TextSendMessage(text='ทดสอบสำเร็จ')
+        text_message = TextSendMessage(text='ทดสอบสำเร็จ :' + a['Heartrate_O2']['H'])
         line_bot_api.reply_message(reply_token,text_message)
     if intent == 'test':
         text_message = TextSendMessage(text='ate')
