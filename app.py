@@ -3,13 +3,22 @@ from linebot.models import *
 from linebot import *
 import requests
 import json
-#FIREBASE_HOST ="datacenter-3975d-default-rtdb.asia-southeast1.firebasedatabase.app"
-#FIREBASE_AUTH= "7sWhgxLOBU37yOo3swUAIGWvuEhcbRzp1kvm7TwC"
+
+FIREBASE_HOST ="chatbot-nodemcu-default-rtdb.asia-southeast1.firebasedatabase.app"
+FIREBASE_AUTH= "gg38qMdjcLgoBcOjFQRFJd00T1C0GosQ1PTDJWL0"
+
 #SI = {"Temperature":"°C","Humidity":"%"}
 
 
 channel_secret = "2f3b607cd83fc7c00d0ce62b223d022c"
 channel_access_token = "KnlBec0qNynC8cJKAIEeAFiob+drNaRCVem8BD6D6v0oikb+Uc1uS0T8IwdyTDGBApdtKvAH4TRbaj7rFTGpiDYM4HND3H3ytCASWUYPkH9WkspO8jMsKiDCH+29sPmTffKtglbNG4a6p9WJzYVoVwdB04t89/1O/w1cDnyilFU="
+
+
+def callAPI():
+    link = "https://{}/.json?auth={}".format(FIREBASE_HOST,FIREBASE_AUTH)
+    response = requests.get(link)
+    return response.json()
+
 
 
 app = Flask(__name__)
@@ -41,6 +50,8 @@ def callback():
 
 def reply(intent,text,reply_token,id,disname):
     if intent == 'Healthcare':
+        a = callAPI()
+        print(a['H'])
         text_message = TextSendMessage(text='ทดสอบสำเร็จ')
         line_bot_api.reply_message(reply_token,text_message)
     if intent == 'test':
