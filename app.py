@@ -36,13 +36,13 @@ def callback():
     reply_token = req['originalDetectIntentRequest']['payload']['data']['replyToken']
     id = req['originalDetectIntentRequest']['payload']['data']['source']['userId']
     disname = line_bot_api.get_profile(id).display_name
-
+    '''
     print('id = ' + id)
     print('name = ' + disname)
     print('text = ' + text)
     print('intent = ' + intent)
     print('reply_token = ' + reply_token)
-
+    '''
     reply(intent,text,reply_token,id,disname)
 
     return 'OK'
