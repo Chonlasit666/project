@@ -51,7 +51,7 @@ def callback():
 def reply(intent,text,reply_token,id,disname):
     if intent == 'Healthcare':
         a = callAPI()
-        print(a['H'])
+        print(a.keys())
         text_message = TextSendMessage(text='ทดสอบสำเร็จ')
         line_bot_api.reply_message(reply_token,text_message)
     if intent == 'test':
