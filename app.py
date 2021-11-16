@@ -51,9 +51,7 @@ def callback():
 def reply(intent,text,reply_token,id,disname):
     if intent == 'Healthcare':
         a = callAPI()
-        print(a.keys())
-        print(a['Heartrate_O2']['H'])
-        text_message = TextSendMessage(text='ทดสอบสำเร็จ :' + str(a['Heartrate_O2']['H']))
+        text_message = TextSendMessage(text='Heartrate : ' + str(a['Heartrate_O2']['H']) + 'O2 : ' + str(a['Heartrate_O2']['O2']))
         line_bot_api.reply_message(reply_token,text_message)
     if intent == 'test':
         text_message = TextSendMessage(text='ate')
