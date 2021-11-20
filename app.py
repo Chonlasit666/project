@@ -49,7 +49,7 @@ def callback():
 
 
 def reply(intent,text,reply_token,id,disname):
-    text_message = TextSendMessage(text='อัตราการเต้นหัวใจของคุณมีค่าสูงมากกว่า 100 BPM เป็นเวลานานแล้วคุณควรไปพบแพทย์เพื่อตรวจเช็คสุขภาพ')
+    text_message = TextSendMessage(text='ในช่วง 5 วันที่ผ่านมาคุณมีค่าออกซึเจนในเลือดต่ำกว่า 90 % ควรไปพบแพทย์เพื่อตรวจเช็คสุขภาพ')
     line_bot_api.reply_message(reply_token,text_message)
     if intent == 'Healthcare':
         a = callAPI()
