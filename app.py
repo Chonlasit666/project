@@ -49,12 +49,14 @@ def callback():
 
 
 def reply(intent,text,reply_token,id,disname):
+    text_message = TextSendMessage(text='อัตราการเต้นหัวใจของคุณมีค่าสูงมากกว่า 100 BPM เป็นเวลานานแล้วคุณควรไปพบแพทย์เพื่อตรวจเช็คสุขภาพ')
+    line_bot_api.reply_message(reply_token,text_message)
     if intent == 'Healthcare':
         a = callAPI()
         text_message = TextSendMessage(text='Heartrate : ' + str(a['Heartrate_O2']['H']) + ' bpm' + ' O2 : ' + str(a['Heartrate_O2']['O2']) + ' %')
         line_bot_api.reply_message(reply_token,text_message)
     if intent == 'test':
-        text_message = TextSendMessage(text='ate')
+        text_message = TextSendMessage(text='')
         line_bot_api.reply_message(reply_token,text_message)
 
 if __name__ == "__main__":
