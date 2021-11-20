@@ -54,7 +54,8 @@ def reply(intent,text,reply_token,id,disname):
         text_message = TextSendMessage(text='Heartrate : ' + str(a['Heartrate_O2']['H']) + ' bpm' + ' O2 : ' + str(a['Heartrate_O2']['O2']) + ' %')
         line_bot_api.reply_message(reply_token,text_message)
     if intent == 'test':
-        text_message = TextSendMessage(text='X : ' + str(a['Heartrate_O2']['X']) + ' m/s2' + ' y : ' + str(a['Heartrate_O2']['y']) + ' m/s2')
+        a = callAPI()
+        text_message = TextSendMessage(text='X : ' + str(a['Heartrate_O2']['X']) + ' m/s2' + ' y : ' + str(a['Heartrate_O2']['y']) + ' m/s2' + ' z : ' + str(a['Heartrate_O2']['z']) + ' m/s2')
         line_bot_api.reply_message(reply_token,text_message)
 
 if __name__ == "__main__":
