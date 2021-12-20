@@ -49,7 +49,7 @@ def callback():
 
     return 'OK'
 
-
+"""
 def reply(intent,text,reply_token,id,disname):
     if intent == 'Healthcare':
         a = callAPI()
@@ -59,6 +59,6 @@ def reply(intent,text,reply_token,id,disname):
         a = callAPI()
         text_message = TextSendMessage(text='X : ' + str(a['Heartrate_O2']['X']) + ' m/s2' + ' y : ' + str(a['Heartrate_O2']['y']) + ' m/s2' + ' z : ' + str(a['Heartrate_O2']['z']) + ' m/s2')
         line_bot_api.reply_message(reply_token,text_message)
-
+"""
 if __name__ == "__main__":
     app.run()
