@@ -33,6 +33,7 @@ def callback():
     req = request.get_json(silent=True, force=True)
     intent = req["queryResult"]["intent"]["displayName"]
     entity = req["queryResult"]["parameters"]["bodytypeCheck"]
+    print(entity)
     text = req['originalDetectIntentRequest']['payload']['data']['message']['text']
     reply_token = req['originalDetectIntentRequest']['payload']['data']['replyToken']
     id = req['originalDetectIntentRequest']['payload']['data']['source']['userId']
@@ -52,7 +53,6 @@ def callback():
 def reply(intent,text,reply_token,id,disname):
     if intent == 'Healthcare':
         a = callAPI()
-        print(entity)
         text_message = TextSendMessage(text='Heartrate : ' + str(a['Heartrate_O2']['H']) + ' bpm' + ' O2 : ' + str(a['Heartrate_O2']['O2']) + ' %')
         line_bot_api.reply_message(reply_token,text_message)
     if intent == 'test':
