@@ -34,10 +34,10 @@ def callback():
     intent = req["queryResult"]["intent"]["displayName"]
     entity = req["queryResult"]["parameters"]["bodytypeCheck"]
     print(entity)
-    text = req['originalDetectIntentRequest']['payload']['data']['message']['text']
-    reply_token = req['originalDetectIntentRequest']['payload']['data']['replyToken']
-    id = req['originalDetectIntentRequest']['payload']['data']['source']['userId']
-    disname = line_bot_api.get_profile(id).display_name
+    #text = req['originalDetectIntentRequest']['payload']['data']['message']['text']
+    #reply_token = req['originalDetectIntentRequest']['payload']['data']['replyToken']
+    #id = req['originalDetectIntentRequest']['payload']['data']['source']['userId']
+    #disname = line_bot_api.get_profile(id).display_name
     '''
     print('id = ' + id)
     print('name = ' + disname)
@@ -45,7 +45,7 @@ def callback():
     print('intent = ' + intent)
     print('reply_token = ' + reply_token)
     '''
-    reply(intent,text,reply_token,id,disname)
+    #reply(intent,text,reply_token,id,disname)
 
     return 'OK'
 
