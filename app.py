@@ -48,12 +48,16 @@ def callback():
     '''
 
     if intent == 'Healthcare':
-         a = callAPI()
-         entity = req["queryResult"]["parameters"]["bodytypeCheck"]
-         if (len(entity) == 2) :
-             target = 'Heartrate : ' + str(a['Heartrate_O2']['H']) + ' bpm' + ' O2 : ' + str(a['Heartrate_O2']['O2']) + ' %'
-             print(target)
-             
+        a = callAPI()
+        entity = req["queryResult"]["parameters"]["bodytypeCheck"]
+        if (len(entity) == 2) :
+            target = 'Heartrate : ' + str(a['Heartrate_O2']['H']) + ' bpm' + ' O2 : ' + str(a['Heartrate_O2']['O2']) + ' %'
+            print(target)
+        elif (len(entity) == 1):
+            if("SpO2" in entity) :
+                target =  ' O2 : ' + str(a['Heartrate_O2']['O2']) + ' %'
+            if("Heart Rate" in entity) :
+                target =  'Heartrate : ' + str(a['Heartrate_O2']['H']) + ' bpm'
 
     reply(intent,text,reply_token,id,disname,target)
 
@@ -61,14 +65,9 @@ def callback():
 
 
 def reply(intent,text,reply_token,id,disname,target):
-    if intent == 'Healthcare':
-        a = callAPI()
-        text_message = TextSendMessage(text=target)
-        line_bot_api.reply_message(reply_token,text_message)
-    if intent == 'test':
-        a = callAPI()
-        text_message = TextSendMessage(text='X : ' + str(a['Heartrate_O2']['X']) + ' m/s2' + ' y : ' + str(a['Heartrate_O2']['y']) + ' m/s2' + ' z : ' + str(a['Heartrate_O2']['z']) + ' m/s2')
-        line_bot_api.reply_message(reply_token,text_message)
+    text_message = TextSendMessage(text=target)
+    line_bot_api.reply_message(reply_token,text_message)
+   
 
 if __name__ == "__main__":
     app.run()
