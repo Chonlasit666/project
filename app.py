@@ -51,7 +51,7 @@ def callback():
          a = callAPI()
          entity = req["queryResult"]["parameters"]["bodytypeCheck"]
          if (len(entity) == 2) :
-             target = str(a['Heartrate_O2']['H']) + ' bpm' + ' O2 : ' + str(a['Heartrate_O2']['O2']) + ' %'
+             target = 'Heartrate : ' + str(a['Heartrate_O2']['H']) + ' bpm' + ' O2 : ' + str(a['Heartrate_O2']['O2']) + ' %'
              print(target)
              
 
@@ -60,10 +60,10 @@ def callback():
     return 'OK'
 
 
-def reply(intent,text,reply_token,id,disname):
+def reply(intent,text,reply_token,id,disname,target):
     if intent == 'Healthcare':
         a = callAPI()
-        text_message = TextSendMessage(text='Heartrate : ' + str(a['Heartrate_O2']['H']) + ' bpm' + ' O2 : ' + str(a['Heartrate_O2']['O2']) + ' %')
+        text_message = TextSendMessage(text=target)
         line_bot_api.reply_message(reply_token,text_message)
     if intent == 'test':
         a = callAPI()
