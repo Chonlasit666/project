@@ -48,11 +48,14 @@ def callback():
     '''
 
     if intent == 'Healthcare':
+         a = callAPI()
          entity = req["queryResult"]["parameters"]["bodytypeCheck"]
-         if 'SpO2' in entity :
-             print("ayaya")
-    
-    reply(intent,text,reply_token,id,disname)
+         if (len(entity) == 2) :
+             target = str(a['Heartrate_O2']['H']) + ' bpm' + ' O2 : ' + str(a['Heartrate_O2']['O2']) + ' %'
+             print(target)
+             
+
+    reply(intent,text,reply_token,id,disname,target)
 
     return 'OK'
 
