@@ -38,6 +38,7 @@ def callback():
     reply_token = req['originalDetectIntentRequest']['payload']['data']['replyToken']
     id = req['originalDetectIntentRequest']['payload']['data']['source']['userId']
     disname = line_bot_api.get_profile(id).display_name
+    
     '''
     print('id = ' + id)
     print('name = ' + disname)
@@ -45,6 +46,12 @@ def callback():
     print('intent = ' + intent)
     print('reply_token = ' + reply_token)
     '''
+
+    if intent == 'Healthcare':
+         entity = req["queryResult"]["parameters"]["bodytypeCheck"]
+         if 'SpO2' in entity :
+             print("ayaya")
+    
     reply(intent,text,reply_token,id,disname)
 
     return 'OK'
