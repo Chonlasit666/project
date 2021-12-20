@@ -34,10 +34,11 @@ def callback():
     intent = req["queryResult"]["intent"]["displayName"]
     entity = req["queryResult"]["parameters"]["bodytypeCheck"]
     print(entity)
-    text = req['originalDetectIntentRequest']['payload']['data']['message']['text']
+    text = req['originalDetectIntentRequest']['payload']
+    print(text.keys())
     reply_token = req['originalDetectIntentRequest']['payload']['data']['replyToken']
-    ui = req['originalDetectIntentRequest']['payload']
-    print(ui.keys())
+    id = req['originalDetectIntentRequest']['payload']
+
     disname = line_bot_api.get_profile(id).display_name
     '''
     print('id = ' + id)
