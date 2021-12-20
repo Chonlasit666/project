@@ -34,8 +34,7 @@ def callback():
     intent = req["queryResult"]["intent"]["displayName"]
     entity = req["queryResult"]["parameters"]["bodytypeCheck"]
     print(entity)
-    text = req['originalDetectIntentRequest']['payload']
-    print(text.keys())
+    text = req['originalDetectIntentRequest']['payload']['data']['message']['text']
     reply_token = req['originalDetectIntentRequest']['payload']['data']['replyToken']
     id = req['originalDetectIntentRequest']['payload']
 
